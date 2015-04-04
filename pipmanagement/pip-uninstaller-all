@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+for k in $(pip freeze)
+do
+	sudo pip uninstall $k
+done

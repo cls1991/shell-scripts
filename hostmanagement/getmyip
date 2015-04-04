@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+
+# 获取本机ip地址
+
+ifconfig | grep broadcast | awk '{print $2}'

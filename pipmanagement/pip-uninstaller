@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+for k in $(pip freeze)
+do
+	 if echo $k | grep -q 'pyobjc-framework'
+	 then 
+	 	sudo pip uninstall $k
+	 else
+		:
+	 fi
+done

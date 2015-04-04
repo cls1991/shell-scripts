@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+# 本脚本功能: 后缀名修改
+
+cd ~/Movies/甄嬛传
+for item in $(ls)
+do
+  newfile=${item%.*}.mp4
+  mv $item $newfile
+done
