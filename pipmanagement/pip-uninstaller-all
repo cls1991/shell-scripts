@@ -2,5 +2,5 @@
 
 for k in $(pip freeze)
 do
-	sudo pip uninstall $k
+	sudo pip uninstall -y $k
 done

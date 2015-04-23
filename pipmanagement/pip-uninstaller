@@ -4,7 +4,7 @@ for k in $(pip freeze)
 do
 	 if echo $k | grep -q 'pyobjc-framework'
 	 then 
-	 	sudo pip uninstall $k
+	 	sudo pip uninstall -y $k
 	 else
 		:
 	 fi
