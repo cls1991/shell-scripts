@@ -1,6 +1,9 @@
 #!/bin/zsh
 
-
 # 获取本机ip地址
 
 ifconfig | grep broadcast | awk '{print $2}'
+
+# 获取公网ip地址
+curl icanhazip.com
+
