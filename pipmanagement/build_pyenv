@@ -1,0 +1,32 @@
+#!/usr/bin/zsh
+
+#一键搭建python开发环境
+
+# 判断shell环境
+my_sh=`grep -i name /proc/$$/status| sed 's/[[:space:]]//g' |awk -F ":" '{print $2}'`
+sh_rc=".bashrc"
+if [ 'zsh' = $my_sh ]; then
+    sh_rc=".zshrc"
+elif [ 'bash' = $my_sh ]; then
+    sh_rc=".bashrc"
+else
+    echo 'your shell now is not supported'
+fi
+echo $sh_rc
+
+# 备份配置文件, 添加修改
+back_suffix=`date +%Y%m%d-%H%M`
+cp $HOME/$sh_rc $HOME/$sh_rc.$back_suffix
+
+git clone https://github.com/yyuu/pyenv.git $HOME/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $HOME/$sh_rc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/$sh_rc
+echo 'eval "$(pyenv init -)"' >> $HOME/$sh_rc
+
+git clone https://github.com/yyuu/pyenv-virtualenv.git ~$HOME/.pyenv/plugins/pyenv-virtualenv
+echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/$sh_rc
+
+source $HOME/$sh_rc
+
+echo "done"
+
