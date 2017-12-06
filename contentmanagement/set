@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# 并集, 交集, 差集
+sort <file1> <file2> | uniq
+sort <file1> <file2> | uniq -d
+sort <file1> <file2> <file2> | uniq -u
+
